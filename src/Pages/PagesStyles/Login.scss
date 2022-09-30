@@ -1,0 +1,27 @@
+.input-style {
+  padding-bottom: 10px;
+}
+
+.login-button {
+  align-self: center;
+}
+
+.login-page {
+  padding-top: 50px;
+  padding-bottom: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: aliceblue;
+  min-height: 90vh;
+}
+
+.login-text {
+  border: 20px black;
+}
+
+.login-form {
+  ::after {
+    box-shadow: 10px;
+  }
+}
