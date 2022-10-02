@@ -1,83 +1,56 @@
-import React from "react";
+import React, { useState } from "react";
 import { Formik } from "formik";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import "../PagesStyles/Login.scss";
 
-const LoginForm = () => {
+const LoginForm2 = (props) => {
+  const user = { uName: "Admin", pass: "Admin123" };
+  const [usernameEntered, setUsernameEntered] = useState("");
+  const [passEntered, setPassEntered] = useState("");
+
+  const passwordInputed = (event) => {
+    setPassEntered(event.target.value);
+  };
+  const usernameInputed = (event) => {
+    setUsernameEntered(event.target.value);
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if (passEntered === user.pass && usernameEntered === user.uName) {
+      alert("Login was Succesful");
+    } else {
+      props.showModal(true);
+    }
+  };
+
   return (
-    <div>
-      <Formik
-        initialValues={{
-          username: "",
-          password: "",
-        }}
-        validate={(values) => {
-          const errors = {};
-          const text_error = "Required";
-          if (!values.username) {
-            errors.username = text_error;
-          }
-          if (
-            !/^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/i.test(
-              values.password
-            )
-          ) {
-            errors.password =
-              "Password should contain at least one number and one special character";
-          }
-        }}
-        onSubmit={({ setSubmitting }) => {
-          setTimeout(() => {
-            alert("Login was Succesful");
-            setSubmitting(false);
-          }, 1000);
-        }}
-      >
-        {({
-          errors,
-          touched,
-          values,
-          handleChange,
-          handleBlur,
-          handleSubmit,
-          isSubmitting,
-        }) => (
-          <Form onSubmit={handleSubmit}>
-            <Form.Group className="input-style">
-              <Form.Label>Username</Form.Label>
-              <Form.Control
-                type="text"
-                name="username"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.username}
-              />
-              {errors.username && touched.username && errors.username}
-              <Form.Label>Password</Form.Label>
-              <Form.Control
-                type="password"
-                name="password"
-                placeholder="********"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.password}
-              />
-              {errors.password && touched.password && errors.password}
-            </Form.Group>
-            <Button
-              className="login-button"
-              type="submit"
-              variant="primary"
-              disabled={isSubmitting}
-            >
-              Login
-            </Button>
-          </Form>
-        )}
+    <>
+      <Formik>
+        <Form onSubmit={handleSubmit}>
+          <Form.Group className="input-style">
+            <Form.Label>Username</Form.Label>
+            <Form.Control
+              type="text"
+              name="username"
+              onChange={usernameInputed}
+            />
+            <Form.Label>Password</Form.Label>
+            <Form.Control
+              type="password"
+              name="password"
+              placeholder="********"
+              onChange={passwordInputed}
+            />
+          </Form.Group>
+          <Button className="login-button" type="submit" variant="primary">
+            Login
+          </Button>
+        </Form>
       </Formik>
-    </div>
+    </>
   );
 };
 
-export default LoginForm;
+export default LoginForm2;
