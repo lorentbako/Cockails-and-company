@@ -7,16 +7,19 @@ import reactjs from "../Assets/Images/reactjs.png";
 const Carusel = () => {
   const carusel_info = [
     {
+      key: "1st",
       img: javascriptimg,
       title: "Javascript",
       description: "Skill Level: Intermediate",
     },
     {
+      key: "2nd",
       img: htmlcss,
       title: "HTML And CSS",
       description: "Skill Level: Junior",
     },
     {
+      key: "3rd",
       img: reactjs,
       title: "ReactJS",
       description: "Skill Level: Junior",
