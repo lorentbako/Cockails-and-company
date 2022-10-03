@@ -4,7 +4,7 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import "../PagesStyles/Login.scss";
 
-const LoginForm2 = (props) => {
+const LoginForm = (props) => {
   const user = { uName: "Admin", pass: "Admin123" };
   const [usernameEntered, setUsernameEntered] = useState("");
   const [passEntered, setPassEntered] = useState("");
@@ -53,4 +53,4 @@ const LoginForm2 = (props) => {
   );
 };
 
-export default LoginForm2;
+export default LoginForm;

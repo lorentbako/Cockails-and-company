@@ -1,12 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 
 function ModalError(props) {
-  const [show, setShow] = useState(false);
-
   const handleClose = () => {
-    setShow(false);
     props.closeModal(false);
   };
 
