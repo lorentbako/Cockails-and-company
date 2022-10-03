@@ -1,8 +1,8 @@
 import React from "react";
 import Container from "react-bootstrap/esm/Container";
-import AcordionsHome from "./PagesComponents/AcordionsHome";
-import Carusel from "./PagesComponents/Carousel";
-import HomeCards from "./PagesComponents/HomeCards";
+import AcordionsHome from "./PagesComponents/Homepage/AcordionsHome";
+import Carusel from "./PagesComponents/Homepage/Carousel";
+import HomeCards from "./PagesComponents/Homepage/HomeCards";
 import "./PagesStyles/Homepage.scss";
 
 const Homepage = () => {

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Formik } from "formik";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import "../PagesStyles/Login.scss";
+import "../../PagesStyles/Login.scss";
 
 const LoginForm = (props) => {
   const user = { uName: "Admin", pass: "Admin123" };

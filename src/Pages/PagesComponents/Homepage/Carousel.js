@@ -1,8 +1,8 @@
 import React from "react";
 import Carousel from "react-bootstrap/Carousel";
-import javascriptimg from "../Assets/Images/javascript.png";
-import htmlcss from "../Assets/Images/html5-css3.webp";
-import reactjs from "../Assets/Images/reactjs.png";
+import javascriptimg from "../../Assets/Images/javascript.png";
+import htmlcss from "../../Assets/Images/html5-css3.webp";
+import reactjs from "../../Assets/Images/reactjs.png";
 
 const Carusel = () => {
   const carusel_info = [

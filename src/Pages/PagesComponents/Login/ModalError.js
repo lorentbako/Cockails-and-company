@@ -16,7 +16,6 @@ function ModalError(props) {
         centered
         show={props.submitCheck}
         onHide={handleClose}
-        animation={false}
       >
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter">

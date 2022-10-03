@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import LoginForm from "./PagesComponents/LoginForm";
-import ModalError from "./PagesComponents/ModalError";
+import LoginForm from "./PagesComponents/Login/LoginForm";
+import ModalError from "./PagesComponents/Login/ModalError";
 
 const Login = () => {
   const [modalCheck, setModalCheck] = useState(false);
@@ -12,8 +12,9 @@ const Login = () => {
     setModalCheck(true);
   };
   */
-  const invertModalState = () => {
-    setModalCheck(!modalCheck);
+  const invertModalState = (event) => {
+    console.log(event);
+    setModalCheck(event);
   };
 
   return (
