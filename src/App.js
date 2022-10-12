@@ -1,10 +1,11 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import AboutUs from "./Pages/AboutUs";
 import Homepage from "./Pages/Homepage";
 import Layout from "./Pages/Layout";
 import Login from "./Pages/Login";
 import Services from "./Pages/Services";
 
-function App() {
+const App = () => {
   return (
     <BrowserRouter>
       <Routes>
@@ -12,10 +13,11 @@ function App() {
           <Route index element={<Homepage />} />
           <Route path="login" element={<Login />} />
           <Route path="services" element={<Services />} />
+          <Route path="about" element={<AboutUs />} />
         </Route>
       </Routes>
     </BrowserRouter>
   );
-}
+};
 
 export default App;

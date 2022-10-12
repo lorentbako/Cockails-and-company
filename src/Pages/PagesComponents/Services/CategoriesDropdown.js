@@ -3,7 +3,7 @@ import { useState } from "react";
 import Form from "react-bootstrap/Form";
 
 const CategoriesDropdown = (props) => {
-  const [categorieSelected, setCategoriesSelected] = useState("");
+  const [categorieSelected, setCategoriesSelected] = useState("All");
   const categoriesList = [
     { strCategory: "Ordinary Drink" },
     { strCategory: "Cocktail" },
@@ -13,7 +13,7 @@ const CategoriesDropdown = (props) => {
   ];
 
   const handleCategorieChange = (event) => {
-    setCategoriesSelected(event);
+    setCategoriesSelected((prevCateg) => event.target.value);
     props.categorieSelected(categorieSelected);
   };
   /*
@@ -34,7 +34,9 @@ const CategoriesDropdown = (props) => {
     <Form.Select aria-label="" onChange={handleCategorieChange}>
       <option value="All">Select the Category</option>
       {categoriesList.map((cat) => (
-        <option value={cat.strCategory}>{cat.strCategory}</option>
+        <option value={cat?.strCategory} key={cat?.strCategory}>
+          {cat?.strCategory}
+        </option>
       ))}
     </Form.Select>
   );

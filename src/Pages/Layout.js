@@ -16,6 +16,7 @@ const Layout = () => {
             <Nav className="me-auto">
               <Nav.Link href="/">HomePage</Nav.Link>
               <Nav.Link href="/services">Services</Nav.Link>
+              <Nav.Link href="/about">About Us</Nav.Link>
               <Nav.Link href="/login">Login</Nav.Link>
             </Nav>
           </Container>

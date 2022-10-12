@@ -6,6 +6,10 @@ import "./PagesStyles/Services.scss";
 import SearchAccord from "./PagesComponents/Services/SearchAcord";
 
 const Services = (props) => {
+  const [cocktails, setCocktails] = useState("");
+  const [valueToSearch, setValueToSearch] = useState("");
+  const [categorieSelectedImported, setcategorieSelectedImported] =
+    useState("All");
   const borderVariants = [
     "primary",
     "secondary",
@@ -15,17 +19,13 @@ const Services = (props) => {
     "info",
     "dark",
   ];
-  const [cocktails, setCocktails] = useState("");
-  const [valueToSearch, setValueToSearch] = useState("");
-  const [categorieSelectedImported, setcategorieSelectedImported] =
-    useState("");
 
   const getFinalSearchvalue = (event) => {
     setValueToSearch(event.target.value);
   };
-  const handleFinalCategorieSelected = (event) => {
-    setcategorieSelectedImported(event.target.value);
-    console.log(categorieSelectedImported);
+  const handleFinalCategorieSelected = (value) => {
+    setcategorieSelectedImported(value);
+    console.log(value);
   };
 
   const getApiData = async () => {
@@ -52,6 +52,7 @@ const Services = (props) => {
   useEffect(() => {
     getApiData();
   });
+
   return (
     <Container>
       <SearchAccord
@@ -68,8 +69,8 @@ const Services = (props) => {
               img={drink.strDrinkThumb}
               name={drink.strDrink}
               enLanguage={drink.strInstructions}
-              itLanguage={drink.strInstructionsDE}
-              deLanguage={drink.strInstructionsIT}
+              itLanguage={drink.strInstructionsIT}
+              deLanguage={drink.strInstructionsDE}
               category={drink.strCategory}
               ingredients={[
                 drink.strIngredient1,
