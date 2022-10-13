@@ -21,7 +21,10 @@ const Footer = () => {
             <Row>
               <a href="https://www.linkedin.com/in/lorentbako/">LinkedIn</a>{" "}
             </Row>
-            <a href="mailto: lorentbako@gmail.com">lorentbako@gmail.com</a>
+            <Row>
+              <a href="mailto: lorentbako@gmail.com">lorentbako@gmail.com</a>
+            </Row>
+            <a href="https://github.com/lorentbako">Github</a>
           </Col>
         </Row>
       </Container>

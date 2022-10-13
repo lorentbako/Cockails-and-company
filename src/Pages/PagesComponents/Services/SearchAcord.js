@@ -6,17 +6,22 @@ import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
 import Col from "react-bootstrap/esm/Col";
 import Button from "react-bootstrap/Button";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import CategoriesDropdown from "./CategoriesDropdown";
+import AccordionContext from "react-bootstrap/AccordionContext";
 
-function CustomToggle({ children, eventKey }) {
-  const decoratedOnClick = useAccordionButton(eventKey, () =>
-    console.log("totally custom!")
+function ContextAwareToggle({ eventKey, callback }) {
+  const { activeEventKey } = useContext(AccordionContext);
+  const decoratedOnClick = useAccordionButton(
+    eventKey,
+    () => callback && callback(eventKey)
   );
+
+  const isCurrentEventKey = activeEventKey === eventKey;
 
   return (
     <Button variant="info" onClick={decoratedOnClick}>
-      {children}
+      {isCurrentEventKey ? "Collapse" : "Expand Search"}
     </Button>
   );
 }
@@ -28,17 +33,14 @@ function SearchAccord(props) {
     setSearchValue(event);
     props.searchValueGet(searchValue);
   };
-  const upCategorieSelected = (event) => {
-    props.finalCategorie(event);
-  };
 
   return (
-    <Accordion defaultActiveKey="0" className={props.className}>
+    <Accordion defaultActiveKey="1" className={props.className}>
       <Card>
         <Card.Header>
           <Row>
             <Col>
-              <CustomToggle eventKey="0">Expand Search</CustomToggle>
+              <ContextAwareToggle eventKey="0"></ContextAwareToggle>
             </Col>
             <Col>
               <InputGroup className="mb-3">
@@ -55,7 +57,7 @@ function SearchAccord(props) {
         </Card.Header>
         <Accordion.Collapse eventKey="0">
           <Card.Body>
-            <CategoriesDropdown categorieSelected={upCategorieSelected} />
+            <CategoriesDropdown categorieSelected={props.finalCategorie} />
           </Card.Body>
         </Accordion.Collapse>
       </Card>

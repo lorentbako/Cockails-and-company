@@ -4,9 +4,12 @@ import ListGroup from "react-bootstrap/ListGroup";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/esm/Container";
+import ModalVideo from "./PagesComponents/ModalVideo";
+import Button from "react-bootstrap/Button";
 
 const AboutUs = () => {
   const [people, setPeople] = useState([]);
+  const [modalShow, setModalShow] = useState(true);
 
   const getApiData = async () => {
     const options = {
@@ -23,12 +26,24 @@ const AboutUs = () => {
     setPeople(response);
     console.log(response);
   };
+  const showModalHandler = () => {
+    setModalShow(true);
+  };
+  const hideModalHandler = () => setModalShow(false);
 
   useEffect(() => {
     getApiData();
   }, []);
   return (
     <Container>
+      <Button
+        onClick={showModalHandler}
+        variant="info"
+        style={{ margin: "30px 0px" }}
+      >
+        Company Video Introducion
+      </Button>
+      <ModalVideo showModal={modalShow} hideModal={hideModalHandler} />
       <Row xs={1} md={3} className="g-4">
         {people &&
           people.data?.map((person) => (

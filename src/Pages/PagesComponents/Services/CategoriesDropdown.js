@@ -5,15 +5,16 @@ import Form from "react-bootstrap/Form";
 const CategoriesDropdown = (props) => {
   const [categorieSelected, setCategoriesSelected] = useState("All");
   const categoriesList = [
-    { strCategory: "Ordinary Drink" },
-    { strCategory: "Cocktail" },
-    { strCategory: "Shot" },
-    { strCategory: "Coffee / Tea" },
-    { strCategory: "Punch / Party Drink" },
+    "Ordinary Drink",
+    "Cocktail",
+    "Shot",
+    "Coffee / Tea",
+    "Punch / Party Drink",
   ];
 
   const handleCategorieChange = (event) => {
-    setCategoriesSelected((prevCateg) => event.target.value);
+    setCategoriesSelected(event);
+    console.log(event.target.value);
     props.categorieSelected(categorieSelected);
   };
   /*
@@ -33,9 +34,9 @@ const CategoriesDropdown = (props) => {
   return (
     <Form.Select aria-label="" onChange={handleCategorieChange}>
       <option value="All">Select the Category</option>
-      {categoriesList.map((cat) => (
-        <option value={cat?.strCategory} key={cat?.strCategory}>
-          {cat?.strCategory}
+      {categoriesList.map((categorie) => (
+        <option value={categorie} key={categorie}>
+          {categorie}
         </option>
       ))}
     </Form.Select>

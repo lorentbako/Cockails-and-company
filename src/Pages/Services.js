@@ -10,6 +10,7 @@ const Services = (props) => {
   const [valueToSearch, setValueToSearch] = useState("");
   const [categorieSelectedImported, setcategorieSelectedImported] =
     useState("All");
+
   const borderVariants = [
     "primary",
     "secondary",
@@ -23,9 +24,9 @@ const Services = (props) => {
   const getFinalSearchvalue = (event) => {
     setValueToSearch(event.target.value);
   };
-  const handleFinalCategorieSelected = (value) => {
-    setcategorieSelectedImported(value);
-    console.log(value);
+  const handleFinalCategorieSelected = (event) => {
+    setcategorieSelectedImported(event.target.value);
+    console.log(event.target.value);
   };
 
   const getApiData = async () => {
