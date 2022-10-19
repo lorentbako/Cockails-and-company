@@ -18,6 +18,7 @@ const Layout = () => {
               <Nav.Link href="/services">Services</Nav.Link>
               <Nav.Link href="/about">About Us</Nav.Link>
               <Nav.Link href="/login">Login</Nav.Link>
+              <Nav.Link href="/contactus">Contact Us</Nav.Link>
             </Nav>
           </Container>
         </Navbar>

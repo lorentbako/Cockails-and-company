@@ -6,7 +6,7 @@ import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
 import Col from "react-bootstrap/esm/Col";
 import Button from "react-bootstrap/Button";
-import { useState, useContext } from "react";
+import { useContext, useRef } from "react";
 import CategoriesDropdown from "./CategoriesDropdown";
 import AccordionContext from "react-bootstrap/AccordionContext";
 
@@ -27,10 +27,10 @@ function ContextAwareToggle({ eventKey, callback }) {
 }
 
 function SearchAccord(props) {
-  const [searchValue, setSearchValue] = useState("");
+  const searchValueRef = useRef("");
 
   const handleSearch = (event) => {
-    setSearchValue(event);
+    const searchValue = searchValueRef.current.value;
     props.searchValueGet(searchValue);
   };
 
@@ -50,6 +50,7 @@ function SearchAccord(props) {
                   aria-describedby="basic-addon2"
                   onChange={handleSearch}
                   onBlur={handleSearch}
+                  ref={searchValueRef}
                 />
               </InputGroup>
             </Col>

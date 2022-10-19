@@ -1,9 +1,9 @@
 import React from "react";
-import { useState } from "react";
+import { useRef } from "react";
 import Form from "react-bootstrap/Form";
 
 const CategoriesDropdown = (props) => {
-  const [categorieSelected, setCategoriesSelected] = useState("All");
+  const enteredSearchRef = useRef("");
   const categoriesList = [
     "Ordinary Drink",
     "Cocktail",
@@ -13,10 +13,11 @@ const CategoriesDropdown = (props) => {
   ];
 
   const handleCategorieChange = (event) => {
-    setCategoriesSelected(event);
-    console.log(event.target.value);
+    const categorieSelected = enteredSearchRef.current.value;
+    console.group(categorieSelected, enteredSearchRef.current.value);
     props.categorieSelected(categorieSelected);
   };
+
   /*
   Tried to get the Categories with API and succeded but it was uneccesarely making the app heavy
   const [categorie, setCategorie] = useState("");
@@ -32,7 +33,11 @@ const CategoriesDropdown = (props) => {
   });
 */
   return (
-    <Form.Select aria-label="" onChange={handleCategorieChange}>
+    <Form.Select
+      aria-label=""
+      onChange={handleCategorieChange}
+      ref={enteredSearchRef}
+    >
       <option value="All">Select the Category</option>
       {categoriesList.map((categorie) => (
         <option value={categorie} key={categorie}>

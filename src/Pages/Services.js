@@ -22,11 +22,11 @@ const Services = (props) => {
   ];
 
   const getFinalSearchvalue = (event) => {
-    setValueToSearch(event.target.value);
+    setValueToSearch(event);
   };
   const handleFinalCategorieSelected = (event) => {
-    setcategorieSelectedImported(event.target.value);
-    console.log(event.target.value);
+    setcategorieSelectedImported(event);
+    console.log(event);
   };
 
   const getApiData = async () => {
