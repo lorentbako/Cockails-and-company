@@ -2,6 +2,7 @@ import React from "react";
 import Card from "react-bootstrap/Card";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
+import "../../PagesStyles/Homepage.scss";
 
 const HomeCards = () => {
   const jobs = [
@@ -98,7 +99,7 @@ const HomeCards = () => {
       <Row xs={1} md={2} className="g-4">
         {jobs.map((job) => (
           <Col>
-            <Card>
+            <Card bg="light" text="dark" className="cardcustom">
               <Card.Header as="h4">Company: {job.header}</Card.Header>
               <Card.Body>
                 <Card.Title>Role: {job.title}</Card.Title>

@@ -1,6 +1,7 @@
+@use "../../Index.scss";
 .footer {
-  background-color: black;
-  color: aliceblue;
+  background-color: Index.$headerColor;
+  color: Index.$footerColor;
   position: absolute;
   bottom: 0;
   width: 100%;

@@ -6,6 +6,7 @@ import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/esm/Container";
 import ModalVideo from "./PagesComponents/ModalVideo";
 import Button from "react-bootstrap/Button";
+import "./PagesStyles/AboutUs.scss";
 
 const AboutUs = () => {
   const [people, setPeople] = useState([]);
@@ -35,7 +36,7 @@ const AboutUs = () => {
     getApiData();
   }, []);
   return (
-    <Container>
+    <Container className="cards-container">
       <Button
         onClick={showModalHandler}
         variant="info"
@@ -48,7 +49,7 @@ const AboutUs = () => {
         {people &&
           people.data?.map((person) => (
             <Col>
-              <Card style={{ width: "18rem" }} bg="light" border="info">
+              <Card style={{ width: "18rem" }} bg="light" border="warning">
                 <Card.Body>
                   <Card.Title>
                     {person.firstname + " " + person.lastname}

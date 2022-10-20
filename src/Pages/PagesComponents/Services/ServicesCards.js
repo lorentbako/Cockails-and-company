@@ -1,10 +1,16 @@
 import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
 import LanguageTabs from "./LanguageTabs";
+import "../../PagesStyles/Services.scss";
 
 function ServicesCard(props) {
   return (
-    <Card border={props.borderVariant} style={{ width: "18rem" }}>
+    <Card
+      bg="light"
+      className="mb-2"
+      border={props.borderVariant}
+      style={{ width: "18rem" }}
+    >
       <Card.Img variant="top" src={props.img} />
       <Card.Body>
         <Card.Text>

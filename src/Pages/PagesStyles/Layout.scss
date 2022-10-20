@@ -1,6 +1,8 @@
+@use "../../Index.scss";
 .page-container {
   position: relative;
   min-height: 100vh;
+  background-color: Index.$backgroundColor;
 }
 
 .content {

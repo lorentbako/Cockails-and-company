@@ -66,7 +66,7 @@ const Services = (props) => {
           searchFilteredArray.map((drink) => (
             <ServicesCard
               key={drink.strDrink}
-              borderVariant={borderVariants[0]}
+              borderVariant={borderVariants[4]}
               img={drink.strDrinkThumb}
               name={drink.strDrink}
               enLanguage={drink.strInstructions}

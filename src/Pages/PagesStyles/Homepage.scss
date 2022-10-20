@@ -1,5 +1,6 @@
+@use "../../Index.scss";
 .homepage {
-  background-color: aliceblue;
+  background-color: Index.$backgroundColor;
 }
 
 .carusel {
@@ -12,4 +13,9 @@
 
 .homecards {
   padding-top: 50px;
+}
+
+.cardcustom {
+  color: Index.$cardsColor;
+  background-color: Index.$cardsColor;
 }
