@@ -23,7 +23,7 @@ const HomeCards = () => {
           </ul>
         </>
       ),
-      duration: "07/2022 - 08/2022",
+      duration: "08/2022 - 09/2022",
     },
     {
       key: "job3",

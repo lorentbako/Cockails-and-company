@@ -19,3 +19,9 @@
 .card {
   color: Index.$textColor;
 }
+
+.loading-msg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

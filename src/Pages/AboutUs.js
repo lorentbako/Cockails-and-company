@@ -7,10 +7,12 @@ import Container from "react-bootstrap/esm/Container";
 import ModalVideo from "./PagesComponents/ModalVideo";
 import Button from "react-bootstrap/Button";
 import "./PagesStyles/AboutUs.scss";
+import HelperMsg from "./PagesComponents/HelperMsg";
 
 const AboutUs = () => {
   const [people, setPeople] = useState([]);
   const [modalShow, setModalShow] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
 
   const getApiData = async () => {
     const options = {
@@ -26,6 +28,9 @@ const AboutUs = () => {
     ).then((response) => response.json());
     setPeople(response);
     console.log(response);
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 400);
   };
   const showModalHandler = () => {
     setModalShow(true);
@@ -46,7 +51,18 @@ const AboutUs = () => {
       </Button>
       <ModalVideo showModal={modalShow} hideModal={hideModalHandler} />
       <Row xs={1} md={3} className="g-4">
-        {people &&
+        {isLoading && (
+          <HelperMsg withSpinner={true}>
+            We are loading Company Employees...{" "}
+          </HelperMsg>
+        )}
+        {!isLoading && people.length === 0 && (
+          <HelperMsg withSpinner={true}>
+            We are having problems pulling data...{" "}
+          </HelperMsg>
+        )}
+        {!isLoading &&
+          people &&
           people.data?.map((person) => (
             <Col>
               <Card style={{ width: "18rem" }} bg="light" border="warning">

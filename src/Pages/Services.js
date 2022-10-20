@@ -4,12 +4,14 @@ import Container from "react-bootstrap/Container";
 
 import "./PagesStyles/Services.scss";
 import SearchAccord from "./PagesComponents/Services/SearchAcord";
+import HelperMsg from "./PagesComponents/HelperMsg";
 
 const Services = (props) => {
   const [cocktails, setCocktails] = useState("");
   const [valueToSearch, setValueToSearch] = useState("");
   const [categorieSelectedImported, setcategorieSelectedImported] =
     useState("All");
+  const [isLoading, setIsLoading] = useState(true);
 
   const borderVariants = [
     "primary",
@@ -33,7 +35,11 @@ const Services = (props) => {
     const response = await fetch(
       `https://www.thecocktaildb.com/api/json/v1/1/search.php?s`
     ).then((response) => response.json());
+    console.log(response);
     setCocktails(response.drinks);
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 500);
   };
   let filteredArray = [];
   let searchFilteredArray = [];
@@ -52,7 +58,7 @@ const Services = (props) => {
 
   useEffect(() => {
     getApiData();
-  });
+  }, []);
 
   return (
     <Container>
@@ -61,8 +67,24 @@ const Services = (props) => {
         searchValueGet={getFinalSearchvalue}
         finalCategorie={handleFinalCategorieSelected}
       />
+      {isLoading && (
+        <HelperMsg withSpinner={true}>
+          We are Loading Amazing Cocktails...{" "}
+        </HelperMsg>
+      )}
+      {cocktails.length !== 0 &&
+        !isLoading &&
+        searchFilteredArray.length === 0 && (
+          <HelperMsg withSpinner={false}>No results found </HelperMsg>
+        )}
+      {!isLoading && cocktails.length === 0 && (
+        <HelperMsg withSpinner={true}>
+          We are trying to fetch the data...
+        </HelperMsg>
+      )}
       <div className="grid-container">
-        {searchFilteredArray &&
+        {!isLoading &&
+          searchFilteredArray &&
           searchFilteredArray.map((drink) => (
             <ServicesCard
               key={drink.strDrink}
