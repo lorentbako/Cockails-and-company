@@ -13,6 +13,34 @@
 
 .header {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
+  padding-top: 20px;
+}
+
+.after-submit-msg {
+  display: grid;
+  grid-template-columns: 250px 250px;
+  grid-template-rows: auto;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30vh;
+}
+
+.ticket-buttons {
+  width: 200px;
+  margin-top: 20px;
+}
+
+.HelperMsg {
+  width: 500px;
+}
+
+.grid-card-container {
+  display: grid;
+  align-content: center;
+  justify-content: center;
+  grid-template-columns: auto auto auto auto;
+  gap: 30px 40px;
+  margin: 30px;
 }

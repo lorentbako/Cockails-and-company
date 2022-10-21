@@ -19,8 +19,8 @@ const CustomSpinner = () => {
 
 const HelperMsg = (props) => {
   return (
-    <div className="loading-msg">
-      <Button variant="warning" disabled>
+    <div className={props.className ? props.className : "loading-msg"}>
+      <Button variant={props.variant ? props.variant : "warning"} disabled>
         {props.children}
         {props.withSpinner && <CustomSpinner />}
       </Button>

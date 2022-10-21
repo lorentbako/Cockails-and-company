@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import Form from "react-bootstrap/Form";
@@ -6,8 +6,10 @@ import ErrorMsg from "./ErrorMsg";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import "../PagesStyles/ContactUs.scss";
+import DbsDataPost from "./Services/DbsDataPost";
 
-const ContactForm = () => {
+const ContactForm = (props) => {
+  const [isSubmiting, setIsSubmiting] = useState(false);
   const formik = useFormik({
     initialValues: {
       firstName: "",
@@ -33,7 +35,12 @@ const ContactForm = () => {
         .required("Required"),
     }),
     onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
+      DbsDataPost(values);
+      setIsSubmiting(true);
+      setTimeout(() => {
+        props.showContactForm();
+      }, 1000);
+      //alert(JSON.stringify(values, null, 2));
     },
   });
 
@@ -112,8 +119,9 @@ const ContactForm = () => {
           />
         </Form.Group>
 
-        <Button variant="primary" type="submit">
-          Submit
+        <Button variant="primary" type="submit" disabled={isSubmiting}>
+          {!isSubmiting && "Submit"}
+          {isSubmiting && "Submitting..."}
         </Button>
       </form>
     </Container>
