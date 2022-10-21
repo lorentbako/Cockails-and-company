@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
-
+import HelperMsg from "../HelperMsg";
 const DbsFataFetch = () => {
   const [employees, setEmployees] = useState("");
 
@@ -28,6 +28,14 @@ const DbsFataFetch = () => {
 
   return (
     <>
+      {employees && employees.length === 0 && (
+        <HelperMsg>No tickets found.</HelperMsg>
+      )}
+      {!employees && (
+        <HelperMsg withSpinner={true}>
+          We are loading tickets from Databse...
+        </HelperMsg>
+      )}
       {employees &&
         employees.map((employee) => (
           <Card style={{ width: "18rem" }} key={employee.id}>
