@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Card from "react-bootstrap/Card";
-import ListGroup from "react-bootstrap/ListGroup";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/esm/Container";
@@ -8,6 +6,7 @@ import ModalVideo from "./PagesComponents/ModalVideo";
 import Button from "react-bootstrap/Button";
 import "./PagesStyles/AboutUs.scss";
 import HelperMsg from "./PagesComponents/HelperMsg";
+import CustomCard from "./PagesComponents/CustomCard";
 
 const AboutUs = () => {
   const [people, setPeople] = useState([]);
@@ -32,10 +31,8 @@ const AboutUs = () => {
       setIsLoading(false);
     }, 400);
   };
-  const showModalHandler = () => {
-    setModalShow(true);
-  };
-  const hideModalHandler = () => setModalShow(false);
+
+  const modalVisability = () => setModalShow(!modalShow);
 
   useEffect(() => {
     getApiData();
@@ -43,13 +40,13 @@ const AboutUs = () => {
   return (
     <Container className="cards-container">
       <Button
-        onClick={showModalHandler}
+        onClick={modalVisability}
         variant="info"
         style={{ margin: "30px 0px" }}
       >
         Company Video Introducion
       </Button>
-      <ModalVideo showModal={modalShow} hideModal={hideModalHandler} />
+      <ModalVideo showModal={modalShow} hideModal={modalVisability} />
       <Row xs={1} md={3} className="g-4">
         {isLoading && (
           <HelperMsg withSpinner={true}>
@@ -65,34 +62,30 @@ const AboutUs = () => {
           people &&
           people.data?.map((person) => (
             <Col>
-              <Card style={{ width: "18rem" }} bg="light" border="warning">
-                <Card.Body>
-                  <Card.Title>
-                    {person.firstname + " " + person.lastname}
-                  </Card.Title>
-                  <Card.Text>
-                    Address:{" "}
-                    {[
-                      person.address.street,
-                      person.address.streetName,
-                      person.address.buildingNumber,
-                      person.address.city,
-                    ].join(", ")}
-                  </Card.Text>
-                </Card.Body>
-                <ListGroup className="list-group-flush">
-                  <ListGroup.Item>
-                    <b>E-Mail: </b>
-                    {person.email}
-                  </ListGroup.Item>
-                  <ListGroup.Item>
+              <CustomCard
+                key={person.email}
+                title={person.firstname + " " + person.lastname}
+                cardText={
+                  "Address: " +
+                  [
+                    person.address.street,
+                    person.address.streetName,
+                    person.address.buildingNumber,
+                    person.address.city,
+                  ].join(", ")
+                }
+                listItem1={
+                  <>
+                    <b>E-Mail: </b> {person.email}
+                  </>
+                }
+                listItem2={
+                  <>
                     <b>Phone:</b> {person.phone}
-                  </ListGroup.Item>
-                </ListGroup>
-                <Card.Body>
-                  <Card.Link href={person.website}>Website</Card.Link>
-                </Card.Body>
-              </Card>
+                  </>
+                }
+                link={person.website}
+              />
             </Col>
           ))}
       </Row>

@@ -9,7 +9,6 @@ const DbsDataPost = async (props) => {
       },
     }
   );
-  console.log(response);
 };
 
 export default DbsDataPost;

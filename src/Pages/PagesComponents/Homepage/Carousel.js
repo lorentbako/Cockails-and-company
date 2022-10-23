@@ -30,7 +30,7 @@ const Carusel = () => {
     <div>
       <Carousel>
         {carusel_info.map((slide) => (
-          <Carousel.Item>
+          <Carousel.Item key={slide.key}>
             <img className="d-block w-100" src={slide.img} alt="First slide" />
             <Carousel.Caption>
               <h3>{slide.title}</h3>

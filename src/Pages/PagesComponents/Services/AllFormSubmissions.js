@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
-import Card from "react-bootstrap/Card";
-import ListGroup from "react-bootstrap/ListGroup";
+import CustomCard from "../CustomCard";
 import HelperMsg from "../HelperMsg";
-const DbsFataFetch = () => {
+const AllFormSubmissions = () => {
   const [employees, setEmployees] = useState("");
 
   const fetchApiData = async () => {
@@ -38,21 +37,17 @@ const DbsFataFetch = () => {
       )}
       {employees &&
         employees.map((employee) => (
-          <Card style={{ width: "18rem" }} key={employee.id}>
-            <Card.Header>
-              <b>{`${employee.firstName} ${employee.lastName} , ${employee.age} yrs `}</b>
-            </Card.Header>
-            <ListGroup variant="flush">
-              <ListGroup.Item>
-                <b> Description: </b>
-                {employee.description}
-              </ListGroup.Item>
-              <ListGroup.Item>{employee.email}</ListGroup.Item>
-            </ListGroup>
-          </Card>
+          <CustomCard
+            key={employee.id}
+            title={
+              <b>{`${employee.firstName} ${employee.lastName}, ${employee.age}yrs `}</b>
+            }
+            cardText={employee.description}
+            listItem1={"Email: " + employee.email}
+          />
         ))}
     </>
   );
 };
 
-export default DbsFataFetch;
+export default AllFormSubmissions;

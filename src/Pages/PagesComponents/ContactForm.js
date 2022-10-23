@@ -6,7 +6,7 @@ import ErrorMsg from "./ErrorMsg";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import "../PagesStyles/ContactUs.scss";
-import DbsDataPost from "./Services/DbsDataPost";
+import DbsDataPost from "../HOC/DbsDataPost";
 
 const ContactForm = (props) => {
   const [isSubmiting, setIsSubmiting] = useState(false);

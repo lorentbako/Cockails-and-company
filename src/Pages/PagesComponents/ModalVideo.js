@@ -18,9 +18,9 @@ const ModalVideo = (props) => {
             height="515"
             src="https://www.youtube.com/embed/pjNI9K1D_xo"
             title="YouTube video player"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen
+            frameBorder="0"
+            allow="accelerometer; clipboard-write; encrypted-media; gyroscope;"
+            loading="eager"
           ></iframe>
         </Modal.Body>
       </Modal>

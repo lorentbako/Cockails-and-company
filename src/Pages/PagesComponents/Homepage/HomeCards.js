@@ -98,7 +98,7 @@ const HomeCards = () => {
     <div>
       <Row xs={1} md={2} className="g-4">
         {jobs.map((job) => (
-          <Col>
+          <Col key={job.key}>
             <Card bg="light" text="dark" className="cardcustom">
               <Card.Header as="h4">Company: {job.header}</Card.Header>
               <Card.Body>

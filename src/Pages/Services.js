@@ -13,16 +13,6 @@ const Services = (props) => {
     useState("All");
   const [isLoading, setIsLoading] = useState(true);
 
-  const borderVariants = [
-    "primary",
-    "secondary",
-    "success",
-    "danger",
-    "warning",
-    "info",
-    "dark",
-  ];
-
   const getFinalSearchvalue = (event) => {
     setValueToSearch(event);
   };
@@ -88,7 +78,6 @@ const Services = (props) => {
           searchFilteredArray.map((drink) => (
             <ServicesCard
               key={drink.strDrink}
-              borderVariant={borderVariants[4]}
               img={drink.strDrinkThumb}
               name={drink.strDrink}
               enLanguage={drink.strInstructions}

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Button from "react-bootstrap/esm/Button";
 import ContactForm from "./PagesComponents/ContactForm";
 import HelperMsg from "./PagesComponents/HelperMsg";
-import DbsFataFetch from "./PagesComponents/Services/DbsFataFetch";
+import AllFormSubmissions from "./PagesComponents/Services/AllFormSubmissions";
 import "./PagesStyles/ContactUs.scss";
 
 const ContactUS = () => {
@@ -36,7 +36,7 @@ const ContactUS = () => {
             </Button>
           </div>
           <div className="grid-card-container">
-            <DbsFataFetch />
+            <AllFormSubmissions />
           </div>
         </>
       )}
