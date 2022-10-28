@@ -53,7 +53,7 @@ const AboutUs = () => {
             We are loading Company Employees...{" "}
           </HelperMsg>
         )}
-        {!isLoading && people.length === 0 && (
+        {!isLoading && people.data.length < 1 && (
           <HelperMsg withSpinner={true}>
             We are having problems pulling data...{" "}
           </HelperMsg>

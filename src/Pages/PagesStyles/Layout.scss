@@ -8,3 +8,19 @@
 .content {
   padding-bottom: 7rem;
 }
+
+.link {
+  padding: 1rem;
+  color: Index.$backgroundColor;
+  &:link {
+    text-decoration: none;
+  }
+  &:hover {
+    color: Index.$backgroundColor;
+    background-color: grey;
+  }
+  &:active {
+    color: Index.$backgroundColor;
+    background-color: grey;
+  }
+}

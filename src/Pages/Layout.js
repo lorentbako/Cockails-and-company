@@ -2,7 +2,7 @@ import React from "react";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import { Outlet } from "react-router-dom";
+import { Outlet, Link } from "react-router-dom";
 import Footer from "./PagesComponents/Footer";
 import "./PagesStyles/Layout.scss";
 
@@ -10,15 +10,29 @@ const Layout = () => {
   return (
     <div className="page-container">
       <div className="content">
-        <Navbar bg="dark" variant="dark">
+        <Navbar bg="dark" variant="warning">
           <Container>
-            <Navbar.Brand href="/">Lorent</Navbar.Brand>
+            <Navbar.Brand>
+              <Link className="link" to="/">
+                Lorent
+              </Link>
+            </Navbar.Brand>
             <Nav className="me-auto">
-              <Nav.Link href="/">HomePage</Nav.Link>
-              <Nav.Link href="/services">Services</Nav.Link>
-              <Nav.Link href="/about">About Us</Nav.Link>
-              <Nav.Link href="/login">Login</Nav.Link>
-              <Nav.Link href="/contactus">Contact Us</Nav.Link>
+              <Link className="link" to="/">
+                HomePage
+              </Link>
+              <Link className="link" to="/services">
+                Services
+              </Link>
+              <Link className="link" to="/about">
+                About Us
+              </Link>
+              <Link className="link" to="/contactus">
+                Contact Us
+              </Link>
+              <Link className="link" to="/login">
+                Login
+              </Link>
             </Nav>
           </Container>
         </Navbar>
